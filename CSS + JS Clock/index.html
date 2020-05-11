@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS + JS Clock</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0 ;
+            box-sizing: border-box;
+        }
+        html, body {
+            height: 100%;
+            background-color: wheat;
+        }
+        .clock {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .clock__face {
+            height: 300px;
+            width: 300px;
+            border-radius: 100vh;
+            border: 20px solid white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .hand {
+            position: absolute;
+            width: 45%;
+            right: 50%;
+            height: 5px;
+            background-color: black;
+            transform-origin: right;
+            border-radius: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="clock">
+        <div class="clock__face">
+            <div class="hand hand__hour"></div>
+            <div class="hand hand__minute"></div>
+            <div class="hand hand__second"></div>
+        </div>
+    </div>
+    <script>
+        function getHour() {
+            let hour = new Date().getHours();
+            return hour > 12 ? hour -12 : hour;
+        }
+        function setHour() {
+            let hourEl = document.querySelector('.hand__hour');
+            hourEl.style.transform = "translate(0, 50%) rotate(" + (90 + (getHour() * 30)) + "deg)";
+        }
+        function setMinute() {
+            let minute = new Date().getMinutes(), minuteEl = document.querySelector('.hand__minute');
+            minuteEl.style.transform = "translate(0, 50%) rotate(" + (90 + (minute * 6)) + "deg)";
+        }
+        function setSecond() {
+            let second = new Date().getSeconds(), secondEl = document.querySelector('.hand__second');
+            secondEl.style.transform = "translate(0, 50%) rotate(" + (90 + (second * 6)) + "deg)";
+        }
+        setInterval(() => {
+            setHour();
+            setMinute();
+            setSecond();
+        }, 1000);
+    </script>
+</body>
+</html>
