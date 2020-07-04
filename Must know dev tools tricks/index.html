@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Must know Dev Tools Tricks</title>
+</head>
+<body>
+    <script>
+        console.log('Hello world!')
+
+        console.log(`Im a %s string`, 'new')
+
+        console.warn("Don't do this")
+
+        console.assert(1===2, 'This is wrong')
+
+        console.error('Error thrown')
+
+        console.info('Piece of information!')
+
+        console.clear()
+
+        console.groupCollapsed('group start');
+        console.log('group content');
+        console.log('group content');
+        console.groupEnd()
+
+        arr = ['a', 'b', 'b', 'a', 'c', 'r', 'c'];
+            arr.map(element =>
+                console.count(element)
+            );
+
+        console.table(arr)
+    </script>
+</body>
+</html>
